@@ -1,7 +1,6 @@
 package View;
 
 /**
- *
  * @author augustosimionato
  */
 public class LoginView extends javax.swing.JFrame {
@@ -19,58 +18,96 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        GoHome = new javax.swing.JButton();
+        GoNewAccount = new javax.swing.JButton();
+        UserNameField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        PasswordField = new javax.swing.JPasswordField();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login");
+        getContentPane().setLayout(null);
 
-        setSize(new java.awt.Dimension(400, 328));
+        GoHome.setText("Entrar");
+        GoHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoHomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GoHome);
+        GoHome.setBounds(290, 360, 190, 40);
+
+        GoNewAccount.setText("Criar nova conta");
+        GoNewAccount.setBorder(null);
+        GoNewAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GoNewAccountActionPerformed(evt);
+            }
+        });
+        getContentPane().add(GoNewAccount);
+        GoNewAccount.setBounds(330, 410, 110, 30);
+
+        UserNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserNameFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(UserNameField);
+        UserNameField.setBounds(270, 210, 230, 40);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel1.setText("Senha");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(270, 260, 60, 18);
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel2.setText("Usuário");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(270, 190, 60, 18);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/title.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(220, 50, 350, 70);
+        getContentPane().add(PasswordField);
+        PasswordField.setBounds(270, 290, 230, 40);
+
+        setSize(new java.awt.Dimension(766, 619));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void GoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoHomeActionPerformed
+        new View.Home.HomeView().setVisible(true);
+    }//GEN-LAST:event_GoHomeActionPerformed
+
+    private void GoNewAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoNewAccountActionPerformed
+        new NewAccountView().setVisible(true);
+    }//GEN-LAST:event_GoNewAccountActionPerformed
+
+    private void UserNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserNameFieldActionPerformed
+        
+    }//GEN-LAST:event_UserNameFieldActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
+            @Override
             public void run() {
                 new LoginView().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GoHome;
+    private javax.swing.JButton GoNewAccount;
+    private javax.swing.JPasswordField PasswordField;
+    private javax.swing.JTextField UserNameField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

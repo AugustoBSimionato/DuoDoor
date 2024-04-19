@@ -1,5 +1,7 @@
 package View.Home;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author augustosimionato
@@ -8,6 +10,7 @@ public class HomeView extends javax.swing.JFrame {
 
     public HomeView() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -19,22 +22,119 @@ public class HomeView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        easy = new javax.swing.JLabel();
+        medium = new javax.swing.JLabel();
+        IdiomsSelector = new javax.swing.JComboBox<>();
+        hard = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        LogOut = new javax.swing.JMenu();
+        Config = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Início");
+
+        easy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/easy.png"))); // NOI18N
+        easy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                easyMouseClicked(evt);
+            }
+        });
+
+        medium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/medium.png"))); // NOI18N
+        medium.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mediumMouseClicked(evt);
+            }
+        });
+
+        IdiomsSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Espanhol" }));
+
+        hard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hard.png"))); // NOI18N
+        hard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hardMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel1.setText("Inglês");
+
+        LogOut.setText("Sair");
+        LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LogOutMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(LogOut);
+
+        Config.setText("Configurações");
+        Config.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConfigMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(Config);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IdiomsSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(easy)
+                        .addGap(154, 154, 154)
+                        .addComponent(medium)
+                        .addGap(149, 149, 149)
+                        .addComponent(hard))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel1)))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(IdiomsSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(hard)
+                    .addComponent(medium)
+                    .addComponent(easy))
+                .addContainerGap(499, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(400, 328));
+        setSize(new java.awt.Dimension(1803, 1108));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void LogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogOutMouseClicked
+        dispose();
+    }//GEN-LAST:event_LogOutMouseClicked
+
+    private void ConfigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfigMouseClicked
+        new SettingsView().setVisible(true);
+    }//GEN-LAST:event_ConfigMouseClicked
+
+    private void easyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_easyMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_easyMouseClicked
+
+    private void mediumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mediumMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mediumMouseClicked
+
+    private void hardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hardMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hardMouseClicked
 
     /**
      * @param args the command line arguments
@@ -73,5 +173,13 @@ public class HomeView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Config;
+    private javax.swing.JComboBox<String> IdiomsSelector;
+    private javax.swing.JMenu LogOut;
+    private javax.swing.JLabel easy;
+    private javax.swing.JLabel hard;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel medium;
     // End of variables declaration//GEN-END:variables
 }
