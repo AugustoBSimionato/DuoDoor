@@ -125,15 +125,15 @@ public class HomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_ConfigMouseClicked
 
     private void easyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_easyMouseClicked
-        // TODO add your handling code here:
+        new EasyLessonView().setVisible(true);
     }//GEN-LAST:event_easyMouseClicked
 
     private void mediumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mediumMouseClicked
-        // TODO add your handling code here:
+        new MediumLessonView().setVisible(true);
     }//GEN-LAST:event_mediumMouseClicked
 
     private void hardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hardMouseClicked
-        // TODO add your handling code here:
+        new HardLessonView().setVisible(true);
     }//GEN-LAST:event_hardMouseClicked
 
     /**
