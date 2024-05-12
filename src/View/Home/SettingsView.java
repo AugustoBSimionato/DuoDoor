@@ -69,9 +69,19 @@ public class SettingsView extends javax.swing.JFrame {
         Options.add(AddProfilePhotoMenuItem);
 
         EditDataMenuItem.setText("Editar informações");
+        EditDataMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditDataMenuItemActionPerformed(evt);
+            }
+        });
         Options.add(EditDataMenuItem);
 
         DeleteAccountMenuItem.setText("Apagar conta");
+        DeleteAccountMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteAccountMenuItemActionPerformed(evt);
+            }
+        });
         Options.add(DeleteAccountMenuItem);
 
         jMenuBar1.add(Options);
@@ -133,6 +143,14 @@ public class SettingsView extends javax.swing.JFrame {
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void EditDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDataMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditDataMenuItemActionPerformed
+
+    private void DeleteAccountMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteAccountMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

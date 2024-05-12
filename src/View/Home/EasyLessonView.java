@@ -31,6 +31,7 @@ public class EasyLessonView extends javax.swing.JFrame {
         answerTextField3 = new javax.swing.JTextField();
         phraseTextLabel4 = new javax.swing.JLabel();
         answerTextField4 = new javax.swing.JTextField();
+        FinishButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         goBackMenu = new javax.swing.JMenu();
         hintMenu = new javax.swing.JMenu();
@@ -58,6 +59,13 @@ public class EasyLessonView extends javax.swing.JFrame {
 
         phraseTextLabel4.setText("Frase 4 aqui");
 
+        FinishButton.setText("Finalizar");
+        FinishButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FinishButtonMouseClicked(evt);
+            }
+        });
+
         goBackMenu.setText("Voltar");
         goBackMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,10 +88,6 @@ public class EasyLessonView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -97,6 +101,12 @@ public class EasyLessonView extends javax.swing.JFrame {
                     .addComponent(phraseTextLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(phraseTextLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(288, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(FinishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,9 +129,11 @@ public class EasyLessonView extends javax.swing.JFrame {
                 .addComponent(phraseTextLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(answerTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FinishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
 
         setSize(new java.awt.Dimension(857, 614));
@@ -139,6 +151,10 @@ public class EasyLessonView extends javax.swing.JFrame {
     private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
         new EasyContentView().setVisible(true);
     }//GEN-LAST:event_hintMenuMouseClicked
+
+    private void FinishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishButtonMouseClicked
+//        new CongratulationsView().setVisible(true);
+    }//GEN-LAST:event_FinishButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -176,6 +192,7 @@ public class EasyLessonView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton FinishButton;
     private javax.swing.JTextField answerTextField1;
     private javax.swing.JTextField answerTextField2;
     private javax.swing.JTextField answerTextField3;
