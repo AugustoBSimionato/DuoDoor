@@ -20,11 +20,9 @@ public class SettingsView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         UserNameTextField = new javax.swing.JTextField();
-        CreatedAccountTextField = new javax.swing.JTextField();
         SaveButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         GoBack = new javax.swing.JMenu();
         Options = new javax.swing.JMenu();
@@ -32,15 +30,12 @@ public class SettingsView extends javax.swing.JFrame {
         EditDataMenuItem = new javax.swing.JMenuItem();
         DeleteAccountMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/profile.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel2.setText("Usuário");
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel3.setText("Conta criada em");
+        UserNameTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome de usuário"));
+        UserNameTextField.setEnabled(false);
 
         SaveButton.setText("Salvar");
         SaveButton.setEnabled(false);
@@ -49,6 +44,9 @@ public class SettingsView extends javax.swing.JFrame {
                 SaveButtonActionPerformed(evt);
             }
         });
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Por aqui desde"));
 
         GoBack.setText("Voltar");
         GoBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,10 +98,8 @@ public class SettingsView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(259, 259, 259)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(UserNameTextField)
-                            .addComponent(jLabel3)
-                            .addComponent(CreatedAccountTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))))
+                            .addComponent(UserNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(278, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -115,15 +111,11 @@ public class SettingsView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CreatedAccountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
         );
@@ -189,7 +181,6 @@ public class SettingsView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AddProfilePhotoMenuItem;
-    private javax.swing.JTextField CreatedAccountTextField;
     private javax.swing.JMenuItem DeleteAccountMenuItem;
     private javax.swing.JMenuItem EditDataMenuItem;
     private javax.swing.JMenu GoBack;
@@ -197,8 +188,7 @@ public class SettingsView extends javax.swing.JFrame {
     private javax.swing.JButton SaveButton;
     private javax.swing.JTextField UserNameTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

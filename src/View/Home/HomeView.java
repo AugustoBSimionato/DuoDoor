@@ -34,14 +34,14 @@ public class HomeView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Início");
 
-        easy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/easy.png"))); // NOI18N
+        easy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/easy-small.png"))); // NOI18N
         easy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 easyMouseClicked(evt);
             }
         });
 
-        medium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/medium.png"))); // NOI18N
+        medium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/medium-small.png"))); // NOI18N
         medium.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mediumMouseClicked(evt);
@@ -50,7 +50,7 @@ public class HomeView extends javax.swing.JFrame {
 
         IdiomsSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Espanhol" }));
 
-        hard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hard.png"))); // NOI18N
+        hard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/hard-small.png"))); // NOI18N
         hard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hardMouseClicked(evt);
@@ -84,18 +84,20 @@ public class HomeView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
+                .addComponent(IdiomsSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(IdiomsSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(1309, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(easy)
-                        .addGap(154, 154, 154)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(medium)
-                        .addGap(149, 149, 149)
-                        .addComponent(hard))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel1)))
-                .addContainerGap(238, Short.MAX_VALUE))
+                        .addGap(276, 276, 276)
+                        .addComponent(hard)
+                        .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,15 +106,15 @@ public class HomeView extends javax.swing.JFrame {
                 .addComponent(IdiomsSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hard)
-                    .addComponent(medium)
-                    .addComponent(easy))
-                .addContainerGap(499, Short.MAX_VALUE))
+                    .addComponent(easy)
+                    .addComponent(medium))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1803, 1108));
+        setSize(new java.awt.Dimension(1452, 619));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

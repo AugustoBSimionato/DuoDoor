@@ -31,6 +31,7 @@ public class HardLessonView extends javax.swing.JFrame {
         answerTextField3 = new javax.swing.JTextField();
         phraseTextLabel4 = new javax.swing.JLabel();
         answerTextField4 = new javax.swing.JTextField();
+        finishButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         goBackMenu = new javax.swing.JMenu();
         hintMenu = new javax.swing.JMenu();
@@ -58,6 +59,10 @@ public class HardLessonView extends javax.swing.JFrame {
 
         phraseTextLabel4.setText("Frase 4 aqui");
 
+        finishButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        finishButton.setText("Finalizar");
+        finishButton.setEnabled(false);
+
         goBackMenu.setText("Voltar");
         goBackMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,10 +85,6 @@ public class HardLessonView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -97,10 +98,16 @@ public class HardLessonView extends javax.swing.JFrame {
                     .addComponent(phraseTextLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(phraseTextLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(288, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
@@ -120,7 +127,9 @@ public class HardLessonView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(answerTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
         );
 
@@ -133,7 +142,7 @@ public class HardLessonView extends javax.swing.JFrame {
     }//GEN-LAST:event_goBackMenuMouseClicked
 
     private void checkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkButtonMouseClicked
-        new CongratsView().setVisible(true);
+        
     }//GEN-LAST:event_checkButtonMouseClicked
 
     private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
@@ -182,6 +191,7 @@ public class HardLessonView extends javax.swing.JFrame {
     private javax.swing.JTextField answerTextField3;
     private javax.swing.JTextField answerTextField4;
     private javax.swing.JButton checkButton;
+    private javax.swing.JButton finishButton;
     private javax.swing.JMenu goBackMenu;
     private javax.swing.JMenu hintMenu;
     private javax.swing.JLabel jLabel1;

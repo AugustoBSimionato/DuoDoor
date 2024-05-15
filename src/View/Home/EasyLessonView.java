@@ -31,7 +31,7 @@ public class EasyLessonView extends javax.swing.JFrame {
         answerTextField3 = new javax.swing.JTextField();
         phraseTextLabel4 = new javax.swing.JLabel();
         answerTextField4 = new javax.swing.JTextField();
-        FinishButton = new javax.swing.JButton();
+        finishButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         goBackMenu = new javax.swing.JMenu();
         hintMenu = new javax.swing.JMenu();
@@ -59,10 +59,11 @@ public class EasyLessonView extends javax.swing.JFrame {
 
         phraseTextLabel4.setText("Frase 4 aqui");
 
-        FinishButton.setText("Finalizar");
-        FinishButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        finishButton.setText("Finalizar");
+        finishButton.setEnabled(false);
+        finishButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FinishButtonMouseClicked(evt);
+                finishButtonMouseClicked(evt);
             }
         });
 
@@ -105,7 +106,7 @@ public class EasyLessonView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(FinishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
@@ -132,7 +133,7 @@ public class EasyLessonView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FinishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45))
         );
 
@@ -145,16 +146,16 @@ public class EasyLessonView extends javax.swing.JFrame {
     }//GEN-LAST:event_goBackMenuMouseClicked
 
     private void checkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkButtonMouseClicked
-        new CongratsView().setVisible(true);
+        
     }//GEN-LAST:event_checkButtonMouseClicked
 
     private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
         new EasyContentView().setVisible(true);
     }//GEN-LAST:event_hintMenuMouseClicked
 
-    private void FinishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FinishButtonMouseClicked
-//        new CongratulationsView().setVisible(true);
-    }//GEN-LAST:event_FinishButtonMouseClicked
+    private void finishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finishButtonMouseClicked
+        new CongratulationsView().setVisible(true);
+    }//GEN-LAST:event_finishButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -192,12 +193,12 @@ public class EasyLessonView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton FinishButton;
     private javax.swing.JTextField answerTextField1;
     private javax.swing.JTextField answerTextField2;
     private javax.swing.JTextField answerTextField3;
     private javax.swing.JTextField answerTextField4;
     private javax.swing.JButton checkButton;
+    private javax.swing.JButton finishButton;
     private javax.swing.JMenu goBackMenu;
     private javax.swing.JMenu hintMenu;
     private javax.swing.JLabel jLabel1;
