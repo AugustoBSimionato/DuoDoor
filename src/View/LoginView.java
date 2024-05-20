@@ -1,14 +1,21 @@
 package View;
 
+import DAOs.UsuarioDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  * @author augustosimionato
  */
 public class LoginView extends javax.swing.JFrame {
+    private final UsuarioDAO conn = new UsuarioDAO();
+    private int idLogin;
 
     public LoginView() {
+        conn.criaConexao();
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -18,76 +25,116 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         GoHome = new javax.swing.JButton();
-        GoNewAccount = new javax.swing.JButton();
-        UserNameField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        EmailTextField = new javax.swing.JTextField();
         PasswordField = new javax.swing.JPasswordField();
+        imageLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
-        getContentPane().setLayout(null);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 576));
+
+        GoHome.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         GoHome.setText("Entrar");
         GoHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GoHomeActionPerformed(evt);
             }
         });
-        getContentPane().add(GoHome);
-        GoHome.setBounds(290, 360, 190, 40);
 
-        GoNewAccount.setText("Criar nova conta");
-        GoNewAccount.setBorder(null);
-        GoNewAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GoNewAccountActionPerformed(evt);
-            }
-        });
-        getContentPane().add(GoNewAccount);
-        GoNewAccount.setBounds(330, 410, 110, 30);
+        EmailTextField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        EmailTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        UserNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserNameFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(UserNameField);
-        UserNameField.setBounds(270, 210, 230, 40);
+        PasswordField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PasswordField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel1.setText("Senha");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(270, 260, 60, 18);
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/title.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel2.setText("Usuário");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(270, 190, 60, 18);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Criar Conta");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/title.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(220, 50, 350, 70);
-        getContentPane().add(PasswordField);
-        PasswordField.setBounds(270, 290, 230, 40);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 377, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                    .addComponent(PasswordField))
+                .addGap(377, 377, 377))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(337, 337, 337)
+                        .addComponent(imageLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(452, 452, 452)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(GoHome, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(imageLabel)
+                .addGap(55, 55, 55)
+                .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140)
+                .addComponent(GoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
 
-        setSize(new java.awt.Dimension(766, 619));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(476, 476, 476))
+        );
+
+        setSize(new java.awt.Dimension(1040, 584));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoHomeActionPerformed
-        new View.Home.HomeView().setVisible(true);
+        if(!EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty()){
+            if(conn.logUsuario(EmailTextField.getText(), PasswordField.getText())){
+                try {
+                    idLogin = conn.getIdLoginBD();
+                    new View.Home.HomeView().setVisible(true);
+                } catch (SQLException ex) {
+                    System.out.println("Erro ao carregar id: " + ex.getMessage());
+                }
+            }else{
+                JOptionPane.showMessageDialog(this,
+                    "Não foi possével fazer Login",
+                    "Login",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this,
+                    "Não foi possével criar a conta pois um dos campos está vazio",
+                    "Login",
+                    JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_GoHomeActionPerformed
-
-    private void GoNewAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoNewAccountActionPerformed
-        new NewAccountView().setVisible(true);
-    }//GEN-LAST:event_GoNewAccountActionPerformed
-
-    private void UserNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserNameFieldActionPerformed
-        
-    }//GEN-LAST:event_UserNameFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,12 +149,11 @@ public class LoginView extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JTextField EmailTextField;
     private javax.swing.JButton GoHome;
-    private javax.swing.JButton GoNewAccount;
     private javax.swing.JPasswordField PasswordField;
-    private javax.swing.JTextField UserNameField;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

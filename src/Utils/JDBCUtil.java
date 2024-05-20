@@ -59,51 +59,5 @@ public class JDBCUtil {
      */
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, username, password);
-    }
-
-    public static boolean movNext(ResultSet rsdados) {
-        try {
-            if (rsdados != null) {
-                if (!rsdados.isLast()) {
-                    rsdados.next();
-                    return true;
-                }               
-            }
-        } catch (SQLException erro) {
-            System.out.println(erro);
-            return false;
-        }
-        return false;
-    }
-
-    public static boolean movPrev(ResultSet rsdados) {
-        try {
-            if (rsdados != null) {
-                if (!rsdados.isFirst()) {
-                    rsdados.previous();
-                    return true;
-                }
-            }
-        } catch (SQLException erro) {
-            System.out.println(erro);
-            return false;
-        }
-        return false;
-    }
-
-    public static boolean catchFirst(ResultSet rsdados) {
-        try {
-            if (rsdados != null) {
-                if (!rsdados.isFirst()) {
-                    rsdados.first();
-                    return true;
-                }
-            }
-        } catch (SQLException erro) {
-            System.out.println(erro);
-            return false;
-        }
-        return false;
-    }
-    
+    }    
 }

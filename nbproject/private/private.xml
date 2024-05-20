@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/augustosimionato/Documents/GitHub/DuoDoor/src/View/Home/HomeView.java</file>
-            <file>file:/Users/augustosimionato/Documents/GitHub/DuoDoor/src/View/Home/MediumLessonView.java</file>
+            <file>file:/E:/ProjetosJava/DuoDoor/src/View/NewAccountView.java</file>
+            <file>file:/E:/ProjetosJava/DuoDoor/src/SqlCommands/Sql.java</file>
+            <file>file:/E:/ProjetosJava/DuoDoor/src/DAOs/UsuarioDAO.java</file>
         </group>
     </open-files>
 </project-private>

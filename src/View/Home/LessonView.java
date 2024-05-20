@@ -1,14 +1,16 @@
 package View.Home;
 
-import View.Content.HardContentView;
+import View.Content.EasyContentView;
 
 /**
  *
  * @author augustosimionato
  */
-public class HardLessonView extends javax.swing.JFrame {
+public class LessonView extends javax.swing.JFrame {
+    int difficulty;
 
-    public HardLessonView() {
+    public LessonView(int difficulty) {
+        this.difficulty = difficulty;
         initComponents();
     }
 
@@ -37,7 +39,7 @@ public class HardLessonView extends javax.swing.JFrame {
         hintMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Finalizando a jornada");
+        setTitle("Comece sua jornada");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Traduza as frases a seguir");
@@ -59,9 +61,13 @@ public class HardLessonView extends javax.swing.JFrame {
 
         phraseTextLabel4.setText("Frase 4 aqui");
 
-        finishButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         finishButton.setText("Finalizar");
         finishButton.setEnabled(false);
+        finishButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                finishButtonMouseClicked(evt);
+            }
+        });
 
         goBackMenu.setText("Voltar");
         goBackMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,11 +109,11 @@ public class HardLessonView extends javax.swing.JFrame {
                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(84, 84, 84))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
@@ -126,11 +132,11 @@ public class HardLessonView extends javax.swing.JFrame {
                 .addComponent(phraseTextLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(answerTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                .addGap(45, 45, 45))
         );
 
         setSize(new java.awt.Dimension(857, 614));
@@ -146,8 +152,12 @@ public class HardLessonView extends javax.swing.JFrame {
     }//GEN-LAST:event_checkButtonMouseClicked
 
     private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
-        new HardContentView().setVisible(true);
+        new EasyContentView().setVisible(true);
     }//GEN-LAST:event_hintMenuMouseClicked
+
+    private void finishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finishButtonMouseClicked
+        new CongratulationsView().setVisible(true);
+    }//GEN-LAST:event_finishButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -166,13 +176,13 @@ public class HardLessonView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HardLessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HardLessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HardLessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HardLessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LessonView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -180,7 +190,7 @@ public class HardLessonView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HardLessonView().setVisible(true);
+                new LessonView(1).setVisible(true);
             }
         });
     }
