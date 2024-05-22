@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAOs;
 
 import Model.Usuario;
@@ -20,12 +16,13 @@ import java.sql.SQLException;
  * @author Arthur Hassimyan
  */
 public class UsuarioDAO {
+
     private Connection connection = null;
     private PreparedStatement pstdados = null;
     private ResultSet rsdados = null;
     private static final String path = System.getProperty("user.dir");
     private static final File config_file = new File(path + "/src/Utils/configuracaobd.properties");
-    
+
     public boolean criaConexao() {
         System.out.println(config_file);
         try {
@@ -51,19 +48,33 @@ public class UsuarioDAO {
         }
         return false;
     }
-    
-    public boolean closeAll(){
-        try{
-            pstdados.close();
-            rsdados.close();
+
+//    public boolean closeAll() {
+//        try {
+//            pstdados.close();
+//            rsdados.close();
+//            return true;
+//        } catch (SQLException erro) {
+//            System.out.println("Falha na conexao, comando sql = " + erro);
+//        }
+//        return false;
+//    }
+    public boolean closeAll() {
+        try {
+            if (pstdados != null) {
+                pstdados.close();
+            }
+            if (rsdados != null) {
+                rsdados.close();
+            }
             return true;
-        }catch (SQLException erro) {
-            System.out.println("Falha na conexao, comando sql = " + erro);
+        } catch (SQLException erro) {
+            System.out.println("Falha ao fechar os recursos: " + erro.getMessage());
+            return false;
         }
-        return false;
     }
-    
-    public boolean emailExist(String email){
+
+    public boolean emailExist(String email) {
         try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
@@ -76,8 +87,8 @@ public class UsuarioDAO {
         }
         return false;
     }
-    
-    public boolean cadastroUsuario(Usuario usu){
+
+    public boolean cadastroUsuario(Usuario usu) {
         try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
@@ -100,9 +111,9 @@ public class UsuarioDAO {
         }
         return false;
     }
-    
-    public boolean logUsuario(String email, String senha){
-        try{
+
+    public boolean logUsuario(String email, String senha) {
+        try {
             int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
             int concorrencia = ResultSet.CONCUR_UPDATABLE;
             pstdados = connection.prepareStatement(Sql.selectLogin, tipo, concorrencia);
@@ -110,15 +121,36 @@ public class UsuarioDAO {
             pstdados.setString(2, senha);
             rsdados = pstdados.executeQuery();
             return rsdados.next();
-        }catch (SQLException erro) {
+        } catch (SQLException erro) {
             System.out.println("Falha na conexao, comando sql = " + erro);
         }
         return false;
     }
-    
-    public int getIdLoginBD() throws SQLException{
+
+    public int getIdLoginBD() throws SQLException {
         rsdados.first();
         int id = rsdados.getInt("idLogin");
         return id;
-    } 
+    }
+
+//    public boolean deletarUsuario(int id) {
+//        try {
+//            int tipo = ResultSet.TYPE_SCROLL_SENSITIVE;
+//            int concorrencia = ResultSet.CONCUR_UPDATABLE;
+//            pstdados = connection.prepareStatement(Sql.deleteUsuario, tipo, concorrencia);
+//            pstdados.setInt(1, id);
+//            int resposta = pstdados.executeUpdate();
+//            pstdados.close();
+//            if (resposta == 1) {
+//                connection.commit();
+//                return true;
+//            } else {
+//                connection.rollback();
+//                return false;
+//            }
+//        } catch (SQLException e) {
+//            System.out.println("Erro ao deletar o usuário: " + e.getMessage());
+//        }
+//        return false;
+//    }
 }

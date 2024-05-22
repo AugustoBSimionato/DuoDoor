@@ -1,13 +1,21 @@
 package View.Home;
 
+import DAOs.UsuarioDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author augustosimionato
  */
 public class SettingsView extends javax.swing.JFrame {
 
+    private final UsuarioDAO conn = new UsuarioDAO();
+    private int idLogin;
+
     public SettingsView() {
         initComponents();
+        conn.criaConexao();
     }
 
     /**
@@ -20,69 +28,63 @@ public class SettingsView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        ProfilePhotoLabel = new javax.swing.JLabel();
         UserNameTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        SaveButton = new javax.swing.JButton();
+        EmailTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         GoBack = new javax.swing.JMenu();
         Options = new javax.swing.JMenu();
         AddProfilePhotoMenuItem = new javax.swing.JMenuItem();
         EditDataMenuItem = new javax.swing.JMenuItem();
+        SaveChangesMenuItem = new javax.swing.JMenuItem();
         DeleteAccountMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 576));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/profile.png"))); // NOI18N
+        ProfilePhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/profile.png"))); // NOI18N
 
         UserNameTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome de usuário"));
         UserNameTextField.setEnabled(false);
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Por aqui desde"));
+        EmailTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Email"));
+        EmailTextField.setEnabled(false);
 
-        SaveButton.setText("Salvar");
-        SaveButton.setEnabled(false);
-        SaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveButtonActionPerformed(evt);
-            }
-        });
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Conta criada em"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ProfilePhotoLabel)
+                .addGap(290, 290, 290))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(402, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(UserNameTextField)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(393, 393, 393))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                .addGap(23, 23, 23)
+                .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ProfilePhotoLabel)
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         GoBack.setText("Voltar");
@@ -103,13 +105,21 @@ public class SettingsView extends javax.swing.JFrame {
         });
         Options.add(AddProfilePhotoMenuItem);
 
-        EditDataMenuItem.setText("Editar informações");
+        EditDataMenuItem.setText("Habilitar edição");
         EditDataMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditDataMenuItemActionPerformed(evt);
             }
         });
         Options.add(EditDataMenuItem);
+
+        SaveChangesMenuItem.setText("Salvar alterações");
+        SaveChangesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveChangesMenuItemActionPerformed(evt);
+            }
+        });
+        Options.add(SaveChangesMenuItem);
 
         DeleteAccountMenuItem.setText("Apagar conta");
         DeleteAccountMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -127,40 +137,60 @@ public class SettingsView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1040, 584));
+        setSize(new java.awt.Dimension(765, 584));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void GoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GoBackMouseClicked
-        dispose();
+        this.dispose();
+        new HomeView().setVisible(true);
     }//GEN-LAST:event_GoBackMouseClicked
 
     private void AddProfilePhotoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProfilePhotoMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AddProfilePhotoMenuItemActionPerformed
 
-    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaveButtonActionPerformed
-
     private void EditDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDataMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EditDataMenuItemActionPerformed
 
     private void DeleteAccountMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountMenuItemActionPerformed
-        // TODO add your handling code here:
+//        int response = JOptionPane.showConfirmDialog(this,
+//                "Você tem certeza que deseja apagar sua conta?",
+//                "Apagar conta",
+//                JOptionPane.YES_NO_OPTION,
+//                JOptionPane.QUESTION_MESSAGE);
+//
+//        if (response == JOptionPane.YES_OPTION) {
+//            try {
+//                idLogin = conn.getIdLoginBD();
+//                if (conn.deletarUsuario(idLogin)) {
+//                    JOptionPane.showMessageDialog(this,
+//                            "Conta apagada com sucesso!",
+//                            "Apagar conta",
+//                            JOptionPane.INFORMATION_MESSAGE);
+//                    this.dispose();
+//                    new View.LoginView().setVisible(true);
+//                }
+//            } catch (SQLException ex) {
+//                System.out.println("Erro ao carregar deletar conta: " + ex.getMessage());
+//            }
+//        } else {
+//            
+//        }
+//        conn.closeAll();
     }//GEN-LAST:event_DeleteAccountMenuItemActionPerformed
+
+    private void SaveChangesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveChangesMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,12 +231,13 @@ public class SettingsView extends javax.swing.JFrame {
     private javax.swing.JMenuItem AddProfilePhotoMenuItem;
     private javax.swing.JMenuItem DeleteAccountMenuItem;
     private javax.swing.JMenuItem EditDataMenuItem;
+    private javax.swing.JTextField EmailTextField;
     private javax.swing.JMenu GoBack;
     private javax.swing.JMenu Options;
-    private javax.swing.JButton SaveButton;
+    private javax.swing.JLabel ProfilePhotoLabel;
+    private javax.swing.JMenuItem SaveChangesMenuItem;
     private javax.swing.JTextField UserNameTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
  * @author augustosimionato
  */
 public class LoginView extends javax.swing.JFrame {
+
     private final UsuarioDAO conn = new UsuarioDAO();
     private int idLogin;
 
@@ -15,7 +16,7 @@ public class LoginView extends javax.swing.JFrame {
         conn.criaConexao();
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +31,7 @@ public class LoginView extends javax.swing.JFrame {
         EmailTextField = new javax.swing.JTextField();
         PasswordField = new javax.swing.JPasswordField();
         imageLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        GoNewAccount = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
@@ -54,59 +55,64 @@ public class LoginView extends javax.swing.JFrame {
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/title.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Criar Conta");
+        GoNewAccount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        GoNewAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        GoNewAccount.setText("Criar Conta");
+        GoNewAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GoNewAccountMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 377, Short.MAX_VALUE)
+                .addGap(0, 393, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(PasswordField))
                 .addGap(377, 377, 377))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(337, 337, 337)
-                        .addComponent(imageLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(452, 452, 452)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(GoHome, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(imageLabel)
+                        .addGap(341, 341, 341))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(GoNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(GoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(455, 455, 455))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(64, 64, 64)
                 .addComponent(imageLabel)
-                .addGap(55, 55, 55)
+                .addGap(56, 56, 56)
                 .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140)
+                .addGap(49, 49, 49)
                 .addComponent(GoHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(GoNewAccount)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(476, 476, 476))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(1040, 584));
@@ -114,28 +120,39 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoHomeActionPerformed
-        if(!EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty()){
-            if(conn.logUsuario(EmailTextField.getText(), PasswordField.getText())){
+        if (!EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty()) {
+            if (conn.logUsuario(EmailTextField.getText(), PasswordField.getText())) {
                 try {
                     idLogin = conn.getIdLoginBD();
                     new View.Home.HomeView().setVisible(true);
+                    this.dispose();
                 } catch (SQLException ex) {
                     System.out.println("Erro ao carregar id: " + ex.getMessage());
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this,
-                    "Não foi possével fazer Login",
-                    "Login",
-                    JOptionPane.WARNING_MESSAGE);
+                        "Não foi possível fazer o login, tente novamente.",
+                        "Login",
+                        JOptionPane.WARNING_MESSAGE);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possével criar a conta pois um dos campos está vazio",
+                    "Campos de e-mail ou senha estão vazios!",
                     "Login",
                     JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_GoHomeActionPerformed
 
+    private void GoNewAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GoNewAccountMouseClicked
+        new View.NewAccountView().setVisible(true);
+    }//GEN-LAST:event_GoNewAccountMouseClicked
+
+    public void clearFields() {
+        EmailTextField.setText("");
+        PasswordField.setText("");
+        EmailTextField.requestFocus();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -151,9 +168,9 @@ public class LoginView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTextField EmailTextField;
     private javax.swing.JButton GoHome;
+    private javax.swing.JLabel GoNewAccount;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

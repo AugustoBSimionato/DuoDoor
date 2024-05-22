@@ -31,10 +31,9 @@ public class NewAccountView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         PasswordField = new javax.swing.JPasswordField();
         RepeatPasswordField = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        createNewAccountButton = new javax.swing.JButton();
         UserNameTextField = new javax.swing.JTextField();
         EmailTextField = new javax.swing.JTextField();
-        jLabelName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Criar conta");
@@ -47,11 +46,11 @@ public class NewAccountView extends javax.swing.JFrame {
         RepeatPasswordField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         RepeatPasswordField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Repita senha", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setText("Criar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createNewAccountButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        createNewAccountButton.setText("Criar");
+        createNewAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createNewAccountButtonActionPerformed(evt);
             }
         });
 
@@ -61,37 +60,27 @@ public class NewAccountView extends javax.swing.JFrame {
         EmailTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         EmailTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jLabelName.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabelName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelName.setText("Criar Conta");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(EmailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .addComponent(UserNameTextField)
-                    .addComponent(PasswordField)
-                    .addComponent(RepeatPasswordField)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(60, 60, 60))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(65, 65, 65)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(EmailTextField)
+                        .addComponent(UserNameTextField)
+                        .addComponent(PasswordField)
+                        .addComponent(RepeatPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(createNewAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabelName)
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,49 +88,52 @@ public class NewAccountView extends javax.swing.JFrame {
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(RepeatPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(createNewAccountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(376, 420));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createNewAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewAccountButtonActionPerformed
         if (!UserNameTextField.getText().isEmpty() && !EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty() && !RepeatPasswordField.getText().isEmpty()) {
             if (!conn.emailExist(EmailTextField.getText())) {
                 if (PasswordField.getText().equals(RepeatPasswordField.getText())) {
                     if (conn.cadastroUsuario(carregaCliente())) {
-                        System.out.println("Cadastro realizado com sucesso");
+                        JOptionPane.showMessageDialog(this,
+                                "Cadastro realizado com sucesso!",
+                                "Nova conta",
+                                JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                     }
                 }
             } else {
                 JOptionPane.showMessageDialog(this,
-                        "Já existe usuário com este endereço de email",
-                        "New Account",
+                        "Já existe usuário com este endereço de email.",
+                        "Nova conta",
                         JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this,
-                    "Não foi possével criar a conta pois um dos campos está vazio",
-                    "New Account",
+                    "Não foi possível criar a conta pois um dos campos está vazio.",
+                    "Nova conta",
                     JOptionPane.WARNING_MESSAGE);
         }
         conn.closeAll();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_createNewAccountButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +191,7 @@ public class NewAccountView extends javax.swing.JFrame {
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JPasswordField RepeatPasswordField;
     protected javax.swing.JTextField UserNameTextField;
-    private javax.swing.JButton jButton1;
-    protected javax.swing.JLabel jLabelName;
+    private javax.swing.JButton createNewAccountButton;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

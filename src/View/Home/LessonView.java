@@ -1,12 +1,13 @@
 package View.Home;
 
-import View.Content.EasyContentView;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author augustosimionato
  */
 public class LessonView extends javax.swing.JFrame {
+
     int difficulty;
 
     public LessonView(int difficulty) {
@@ -47,6 +48,8 @@ public class LessonView extends javax.swing.JFrame {
         phraseTextLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         phraseTextLabel1.setText("Frase 1 aqui");
 
+        answerTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+
         checkButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         checkButton.setText("Verificar");
         checkButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,9 +60,15 @@ public class LessonView extends javax.swing.JFrame {
 
         phraseTextLabel2.setText("Frase 2 aqui");
 
+        answerTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+
         phraseTextLabel3.setText("Frase 3 aqui");
 
+        answerTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+
         phraseTextLabel4.setText("Frase 4 aqui");
+
+        answerTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
 
         finishButton.setText("Finalizar");
         finishButton.setEnabled(false);
@@ -109,14 +118,14 @@ public class LessonView extends javax.swing.JFrame {
                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(phraseTextLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(answerTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,11 +141,11 @@ public class LessonView extends javax.swing.JFrame {
                 .addComponent(phraseTextLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(answerTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addGap(25, 25, 25))
         );
 
         setSize(new java.awt.Dimension(857, 614));
@@ -144,18 +153,98 @@ public class LessonView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void goBackMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackMenuMouseClicked
-        dispose();
+        this.dispose();
+        new View.Home.HomeView().setVisible(true);
     }//GEN-LAST:event_goBackMenuMouseClicked
 
     private void checkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkButtonMouseClicked
-        
+//        boolean allFieldsFilled = !answerTextField1.getText().isEmpty()
+//                && !answerTextField2.getText().isEmpty()
+//                && !answerTextField3.getText().isEmpty()
+//                && !answerTextField4.getText().isEmpty();
+//
+//        if (!allFieldsFilled) {
+//            JOptionPane.showMessageDialog(this,
+//                    "Complete todos os exercícios antes de continuar",
+//                    "Tarefa",
+//                    JOptionPane.WARNING_MESSAGE);
+//        } else {
+//            boolean allAnswersCorrect = answerTextField1.getText().equals(phraseTextLabel1.getText())
+//                    && answerTextField2.getText().equals(phraseTextLabel2.getText())
+//                    && answerTextField3.getText().equals(phraseTextLabel3.getText())
+//                    && answerTextField4.getText().equals(phraseTextLabel4.getText());
+//
+//            if (allAnswersCorrect) {
+//                finishButton.setEnabled(true);
+//            } else {
+//                JOptionPane.showMessageDialog(this,
+//                        "Uma ou mais respostas estão incorretas",
+//                        "Erro",
+//                        JOptionPane.ERROR_MESSAGE);
+//            }
+//        }
+
+        boolean allFieldsFilled = !answerTextField1.getText().isEmpty()
+                && !answerTextField2.getText().isEmpty()
+                && !answerTextField3.getText().isEmpty()
+                && !answerTextField4.getText().isEmpty();
+
+        if (!allFieldsFilled) {
+            JOptionPane.showMessageDialog(this,
+                    "Complete todos os exercícios antes de continuar",
+                    "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            boolean answer1Correct = answerTextField1.getText().equals(phraseTextLabel1.getText());
+            boolean answer2Correct = answerTextField2.getText().equals(phraseTextLabel2.getText());
+            boolean answer3Correct = answerTextField3.getText().equals(phraseTextLabel3.getText());
+            boolean answer4Correct = answerTextField4.getText().equals(phraseTextLabel4.getText());
+
+            if (answer1Correct && answer2Correct && answer3Correct && answer4Correct) {
+                finishButton.setEnabled(true);
+            } else {
+                StringBuilder errorMessage = new StringBuilder("As seguintes questões estão incorretas:\n");
+
+                if (!answer1Correct) {
+                    errorMessage.append("Questão 1\n");
+                }
+                if (!answer2Correct) {
+                    errorMessage.append("Questão 2\n");
+                }
+                if (!answer3Correct) {
+                    errorMessage.append("Questão 3\n");
+                }
+                if (!answer4Correct) {
+                    errorMessage.append("Questão 4\n");
+                }
+
+                JOptionPane.showMessageDialog(this,
+                        errorMessage.toString(),
+                        "Eita!",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
     }//GEN-LAST:event_checkButtonMouseClicked
 
     private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
-        new EasyContentView().setVisible(true);
+        switch (difficulty) {
+            case 1:
+                new View.Content.EasyContentView().setVisible(true);
+                break;
+            case 2:
+                new View.Content.MediumContentView().setVisible(true);
+                break;
+            case 3:
+                new View.Content.HardContentView().setVisible(true);
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_hintMenuMouseClicked
 
     private void finishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finishButtonMouseClicked
+        this.dispose();
         new CongratulationsView().setVisible(true);
     }//GEN-LAST:event_finishButtonMouseClicked
 
