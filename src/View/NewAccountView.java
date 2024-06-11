@@ -1,9 +1,13 @@
 package View;
 
+import DAOs.SpecificDAO;
 import DAOs.UsuarioDAO;
 import Model.Usuario;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class NewAccountView extends javax.swing.JFrame {
 
-    private final UsuarioDAO conn = new UsuarioDAO();
-
     public NewAccountView() {
         initComponents();
-        conn.criaConexao();
     }
 
     /**
@@ -110,29 +111,26 @@ public class NewAccountView extends javax.swing.JFrame {
 
     private void createNewAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createNewAccountButtonActionPerformed
         if (!UserNameTextField.getText().isEmpty() && !EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty() && !RepeatPasswordField.getText().isEmpty()) {
-            if (!conn.emailExist(EmailTextField.getText())) {
-                if (PasswordField.getText().equals(RepeatPasswordField.getText())) {
-                    if (conn.cadastroUsuario(carregaCliente())) {
+            if (PasswordField.getText().equals(RepeatPasswordField.getText())) {
+                try {
+                    if (SpecificDAO.insertUsuario(carregaCliente())) {
                         JOptionPane.showMessageDialog(this,
                                 "Cadastro realizado com sucesso!",
                                 "Nova conta",
                                 JOptionPane.INFORMATION_MESSAGE);
                         dispose();
                     }
+                } catch (SQLException erro) {
+                    System.out.println("Erro ao Criar Conta"+ erro);
                 }
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Já existe usuário com este endereço de email.",
-                        "Nova conta",
-                        JOptionPane.WARNING_MESSAGE);
             }
+
         } else {
             JOptionPane.showMessageDialog(this,
                     "Não foi possível criar a conta pois um dos campos está vazio.",
                     "Nova conta",
                     JOptionPane.WARNING_MESSAGE);
         }
-        conn.closeAll();
     }//GEN-LAST:event_createNewAccountButtonActionPerformed
 
     /**
@@ -177,12 +175,7 @@ public class NewAccountView extends javax.swing.JFrame {
     }
 
     public Usuario carregaCliente() {
-        Usuario usu = null;
-        String nome = UserNameTextField.getText();
-        String email = EmailTextField.getText();
-        String senha = PasswordField.getText();
-        String data = formatoData();
-        usu = new Usuario(nome, email, senha, data);
+        Usuario usu = new Usuario(UserNameTextField.getText(), EmailTextField.getText(), PasswordField.getText(), formatoData());
         return usu;
     }
 

@@ -1,6 +1,6 @@
 package View;
 
-import DAOs.UsuarioDAO;
+import DAOs.SpecificDAO;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -9,14 +9,29 @@ import javax.swing.JOptionPane;
  */
 public class LoginView extends javax.swing.JFrame {
 
-    private final UsuarioDAO conn = new UsuarioDAO();
-    private int idLogin;
+    private static LoginView tela;
+    private static int idLogin = 1;
+
+    public static int getIdLogin() {
+        return idLogin;
+    }
 
     public LoginView() {
-        conn.criaConexao();
+        SpecificDAO.CriaConexao();
         initComponents();
     }
 
+    public static LoginView getLogin() {
+        if (tela == null) {
+            tela = new LoginView();
+        }
+        return tela;
+    }
+
+    public static void setLogin() {
+        tela = null;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,11 +136,11 @@ public class LoginView extends javax.swing.JFrame {
 
     private void GoHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GoHomeActionPerformed
         if (!EmailTextField.getText().isEmpty() && !PasswordField.getText().isEmpty()) {
-            if (conn.logUsuario(EmailTextField.getText(), PasswordField.getText())) {
+            if (SpecificDAO.logUsuario(EmailTextField.getText(), PasswordField.getText())) {
                 try {
-                    idLogin = conn.getIdLoginBD();
+                    idLogin = SpecificDAO.getIdLoginBD();
                     new View.Home.HomeView().setVisible(true);
-                    this.dispose();
+                    this.setVisible(false);
                 } catch (SQLException ex) {
                     System.out.println("Erro ao carregar id: " + ex.getMessage());
                 }

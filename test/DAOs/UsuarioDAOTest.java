@@ -20,7 +20,7 @@ public class UsuarioDAOTest {
         System.out.println("Test: criaConexao");
         UsuarioDAO instance = new UsuarioDAO();
         boolean expResult = true;
-        boolean result = instance.criaConexao();
+        boolean result = SpecificDAO.CriaConexao();
         assertEquals(expResult, result); //OK
     }
 
@@ -32,7 +32,7 @@ public class UsuarioDAOTest {
         System.out.println("\nTest: closeAll");
         UsuarioDAO instance = new UsuarioDAO();
 
-        assertTrue("Falha ao criar conexão", instance.criaConexao());
+        assertTrue("Falha ao criar conexão", SpecificDAO.CriaConexao());
 
         assertTrue("Falha ao fechar os recursos", instance.closeAll()); //OK
     }
@@ -53,7 +53,7 @@ public class UsuarioDAOTest {
             String currentDate = sdf.format(new Date());
 
             Usuario novoUsuario = new Usuario("Nome", email, "senha", currentDate);
-            instance.criaConexao();
+            SpecificDAO.CriaConexao();
             instance.cadastroUsuario(novoUsuario);
         } catch (Exception e) {
             fail("Falha ao inserir o usuário de teste: " + e.getMessage());
@@ -74,7 +74,7 @@ public class UsuarioDAOTest {
         Usuario usu = new Usuario("Novo Usuario", "novousuario@example.com", "senha123", "2024-05-24");
 
         UsuarioDAO instance = new UsuarioDAO();
-        instance.criaConexao();
+        SpecificDAO.CriaConexao();
 
         boolean expResult = true;
         boolean result = instance.cadastroUsuario(usu);
@@ -93,7 +93,7 @@ public class UsuarioDAOTest {
         String senha = "asd";
 
         UsuarioDAO instance = new UsuarioDAO();
-        instance.criaConexao();
+        SpecificDAO.CriaConexao();
 
         boolean expResult = true;
         boolean result = instance.logUsuario(email, senha);

@@ -1,6 +1,7 @@
 package View.Home;
 
-import DAOs.UsuarioDAO;
+import DAOs.SpecificDAO;
+import View.LoginView;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -10,12 +11,17 @@ import javax.swing.JOptionPane;
  */
 public class SettingsView extends javax.swing.JFrame {
 
-    private final UsuarioDAO conn = new UsuarioDAO();
-    private int idLogin;
-
     public SettingsView() {
-        initComponents();
-        conn.criaConexao();
+        try {
+            SpecificDAO.CriaConexao();
+            initComponents();
+            SpecificDAO.loadSettings(LoginView.getIdLogin());
+            UserNameTextField.setText(SpecificDAO.getUsuario());
+            EmailTextField.setText(SpecificDAO.getEmail());
+            jLabelDate.setText(SpecificDAO.getDate().toString());
+        } catch (SQLException erro) {
+            System.out.println("Erro ao iniciar Settings" + erro);
+        }
     }
 
     /**
@@ -31,13 +37,11 @@ public class SettingsView extends javax.swing.JFrame {
         ProfilePhotoLabel = new javax.swing.JLabel();
         UserNameTextField = new javax.swing.JTextField();
         EmailTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelDate = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         GoBack = new javax.swing.JMenu();
         Options = new javax.swing.JMenu();
-        AddProfilePhotoMenuItem = new javax.swing.JMenuItem();
         EditDataMenuItem = new javax.swing.JMenuItem();
-        SaveChangesMenuItem = new javax.swing.JMenuItem();
         DeleteAccountMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -45,46 +49,46 @@ public class SettingsView extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1024, 576));
 
+        ProfilePhotoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ProfilePhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/profile.png"))); // NOI18N
 
+        UserNameTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         UserNameTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Nome de usuário"));
         UserNameTextField.setEnabled(false);
 
+        EmailTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         EmailTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Email"));
         EmailTextField.setEnabled(false);
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Conta criada em"));
+        jLabelDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelDate.setBorder(javax.swing.BorderFactory.createTitledBorder("Conta criada em"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ProfilePhotoLabel)
-                .addGap(290, 290, 290))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(397, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ProfilePhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(397, 397, 397))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ProfilePhotoLabel)
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(185, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(ProfilePhotoLabel)
+                .addGap(18, 18, 18)
+                .addComponent(UserNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         GoBack.setText("Voltar");
@@ -97,29 +101,13 @@ public class SettingsView extends javax.swing.JFrame {
 
         Options.setText("Opções");
 
-        AddProfilePhotoMenuItem.setText("Adicionar foto de perfil");
-        AddProfilePhotoMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddProfilePhotoMenuItemActionPerformed(evt);
-            }
-        });
-        Options.add(AddProfilePhotoMenuItem);
-
-        EditDataMenuItem.setText("Habilitar edição");
+        EditDataMenuItem.setText("Mudar Senha");
         EditDataMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditDataMenuItemActionPerformed(evt);
             }
         });
         Options.add(EditDataMenuItem);
-
-        SaveChangesMenuItem.setText("Salvar alterações");
-        SaveChangesMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveChangesMenuItemActionPerformed(evt);
-            }
-        });
-        Options.add(SaveChangesMenuItem);
 
         DeleteAccountMenuItem.setText("Apagar conta");
         DeleteAccountMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -137,14 +125,14 @@ public class SettingsView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(765, 584));
+        setSize(new java.awt.Dimension(1038, 583));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,44 +141,33 @@ public class SettingsView extends javax.swing.JFrame {
         new HomeView().setVisible(true);
     }//GEN-LAST:event_GoBackMouseClicked
 
-    private void AddProfilePhotoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProfilePhotoMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddProfilePhotoMenuItemActionPerformed
-
-    private void EditDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDataMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditDataMenuItemActionPerformed
-
     private void DeleteAccountMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountMenuItemActionPerformed
-//        int response = JOptionPane.showConfirmDialog(this,
-//                "Você tem certeza que deseja apagar sua conta?",
-//                "Apagar conta",
-//                JOptionPane.YES_NO_OPTION,
-//                JOptionPane.QUESTION_MESSAGE);
-//
-//        if (response == JOptionPane.YES_OPTION) {
-//            try {
-//                idLogin = conn.getIdLoginBD();
-//                if (conn.deletarUsuario(idLogin)) {
-//                    JOptionPane.showMessageDialog(this,
-//                            "Conta apagada com sucesso!",
-//                            "Apagar conta",
-//                            JOptionPane.INFORMATION_MESSAGE);
-//                    this.dispose();
-//                    new View.LoginView().setVisible(true);
-//                }
-//            } catch (SQLException ex) {
-//                System.out.println("Erro ao carregar deletar conta: " + ex.getMessage());
-//            }
-//        } else {
-//            
-//        }
-//        conn.closeAll();
+        int response = JOptionPane.showConfirmDialog(this,
+                "Você tem certeza que deseja apagar sua conta?",
+                "Apagar conta",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            if (SpecificDAO.excluir(LoginView.getIdLogin())) {
+                JOptionPane.showMessageDialog(this,
+                        "Conta apagada com sucesso!",
+                        "Apagar conta",
+                        JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+                LoginView.getLogin().setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao deletar Usuario!",
+                        "Apagar conta",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_DeleteAccountMenuItemActionPerformed
 
-    private void SaveChangesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaveChangesMenuItemActionPerformed
+    private void EditDataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditDataMenuItemActionPerformed
+        new MudarSenha().setVisible(true);
+    }//GEN-LAST:event_EditDataMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,18 +203,15 @@ public class SettingsView extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem AddProfilePhotoMenuItem;
     private javax.swing.JMenuItem DeleteAccountMenuItem;
     private javax.swing.JMenuItem EditDataMenuItem;
     private javax.swing.JTextField EmailTextField;
     private javax.swing.JMenu GoBack;
     private javax.swing.JMenu Options;
     private javax.swing.JLabel ProfilePhotoLabel;
-    private javax.swing.JMenuItem SaveChangesMenuItem;
     private javax.swing.JTextField UserNameTextField;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelDate;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

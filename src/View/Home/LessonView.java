@@ -1,20 +1,41 @@
 package View.Home;
 
+import DAOs.SpecificDAO;
+import Model.Questoes;
+import SqlCommands.Sql;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author augustosimionato
  */
-public class LessonView extends javax.swing.JFrame {
+public final class LessonView extends javax.swing.JFrame {
+    private int[] idQuestoes;
+    private ArrayList<Questoes> questoes = null;
+    private static String sql;
 
-    int difficulty;
-
-    public LessonView(int difficulty) {
-        this.difficulty = difficulty;
+    public LessonView(String sqls) {
         initComponents();
+        difficult(sqls);
+        try {
+            SpecificDAO.CriaConexao();
+            idQuestoes = carregaVetor();
+            SpecificDAO.loadIdQuestion(sql, idQuestoes);
+            questoes = SpecificDAO.loadQuestion();
+            carregaQuestoes();
+        } catch (SQLException erro) {
+            System.out.println("Erro ao inicializar LessonView" + erro);
+        }
     }
 
+    public void difficult(String sql){
+        this.sql = sql;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -24,59 +45,139 @@ public class LessonView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        phraseTextLabel1 = new javax.swing.JLabel();
-        answerTextField1 = new javax.swing.JTextField();
-        checkButton = new javax.swing.JButton();
-        phraseTextLabel2 = new javax.swing.JLabel();
-        answerTextField2 = new javax.swing.JTextField();
-        phraseTextLabel3 = new javax.swing.JLabel();
-        answerTextField3 = new javax.swing.JTextField();
-        phraseTextLabel4 = new javax.swing.JLabel();
-        answerTextField4 = new javax.swing.JTextField();
+        textFieldPergunta1 = new javax.swing.JLabel();
+        textFieldResposta1 = new javax.swing.JTextField();
+        textFieldPergunta2 = new javax.swing.JLabel();
+        textFieldResposta2 = new javax.swing.JTextField();
+        textFieldPergunta3 = new javax.swing.JLabel();
+        textFieldResposta3 = new javax.swing.JTextField();
+        buttonVerificar = new javax.swing.JButton();
         finishButton = new javax.swing.JButton();
+        buttonResposta = new javax.swing.JButton();
+        textFieldCorreta1 = new javax.swing.JLabel();
+        textFieldCorreta3 = new javax.swing.JLabel();
+        textFieldCorreta2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         goBackMenu = new javax.swing.JMenu();
-        hintMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Comece sua jornada");
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 553));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Traduza as frases a seguir");
 
-        phraseTextLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        phraseTextLabel1.setText("Frase 1 aqui");
+        textFieldPergunta1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        textFieldPergunta1.setText("Frase 1 aqui");
 
-        answerTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+        textFieldResposta1.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
 
-        checkButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        checkButton.setText("Verificar");
-        checkButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                checkButtonMouseClicked(evt);
+        textFieldPergunta2.setText("Frase 2 aqui");
+
+        textFieldResposta2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+
+        textFieldPergunta3.setText("Frase 3 aqui");
+
+        textFieldResposta3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
+
+        buttonVerificar.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        buttonVerificar.setText("Verificar");
+        buttonVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVerificarActionPerformed(evt);
             }
         });
-
-        phraseTextLabel2.setText("Frase 2 aqui");
-
-        answerTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
-
-        phraseTextLabel3.setText("Frase 3 aqui");
-
-        answerTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
-
-        phraseTextLabel4.setText("Frase 4 aqui");
-
-        answerTextField4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resposta"));
 
         finishButton.setText("Finalizar");
         finishButton.setEnabled(false);
-        finishButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                finishButtonMouseClicked(evt);
+        finishButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishButtonActionPerformed(evt);
             }
         });
+
+        buttonResposta.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        buttonResposta.setText("Resposta Correta");
+        buttonResposta.setEnabled(false);
+        buttonResposta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRespostaActionPerformed(evt);
+            }
+        });
+
+        textFieldCorreta1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        textFieldCorreta1.setText("Resposta Correta 1 aqui");
+
+        textFieldCorreta3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        textFieldCorreta3.setText("Resposta Correta 3 aqui");
+
+        textFieldCorreta2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        textFieldCorreta2.setText("Resposta Correta 2 aqui");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(textFieldPergunta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldResposta3)
+                    .addComponent(textFieldResposta2)
+                    .addComponent(textFieldResposta1)
+                    .addComponent(textFieldPergunta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldPergunta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldCorreta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(textFieldCorreta3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldCorreta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonResposta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textFieldPergunta1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textFieldResposta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textFieldCorreta1)
+                .addGap(18, 18, 18)
+                .addComponent(textFieldPergunta2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textFieldResposta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldCorreta2)
+                        .addGap(18, 18, 18)
+                        .addComponent(textFieldPergunta3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldResposta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldCorreta3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
+                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
+        );
 
         goBackMenu.setText("Voltar");
         goBackMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,14 +187,6 @@ public class LessonView extends javax.swing.JFrame {
         });
         jMenuBar1.add(goBackMenu);
 
-        hintMenu.setText("Conteúdo");
-        hintMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hintMenuMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(hintMenu);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,54 +194,17 @@ public class LessonView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(phraseTextLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                    .addComponent(answerTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                    .addComponent(answerTextField3)
-                    .addComponent(answerTextField2)
-                    .addComponent(answerTextField1)
-                    .addComponent(phraseTextLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(phraseTextLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(phraseTextLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(288, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(phraseTextLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(answerTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(phraseTextLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(answerTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(phraseTextLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(answerTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(phraseTextLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(answerTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(857, 614));
+        setSize(new java.awt.Dimension(1040, 584));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,50 +213,27 @@ public class LessonView extends javax.swing.JFrame {
         new View.Home.HomeView().setVisible(true);
     }//GEN-LAST:event_goBackMenuMouseClicked
 
-    private void checkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkButtonMouseClicked
-//        boolean allFieldsFilled = !answerTextField1.getText().isEmpty()
-//                && !answerTextField2.getText().isEmpty()
-//                && !answerTextField3.getText().isEmpty()
-//                && !answerTextField4.getText().isEmpty();
-//
-//        if (!allFieldsFilled) {
-//            JOptionPane.showMessageDialog(this,
-//                    "Complete todos os exercícios antes de continuar",
-//                    "Tarefa",
-//                    JOptionPane.WARNING_MESSAGE);
-//        } else {
-//            boolean allAnswersCorrect = answerTextField1.getText().equals(phraseTextLabel1.getText())
-//                    && answerTextField2.getText().equals(phraseTextLabel2.getText())
-//                    && answerTextField3.getText().equals(phraseTextLabel3.getText())
-//                    && answerTextField4.getText().equals(phraseTextLabel4.getText());
-//
-//            if (allAnswersCorrect) {
-//                finishButton.setEnabled(true);
-//            } else {
-//                JOptionPane.showMessageDialog(this,
-//                        "Uma ou mais respostas estão incorretas",
-//                        "Erro",
-//                        JOptionPane.ERROR_MESSAGE);
-//            }
-//        }
+    private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
+        this.dispose();
+        new CongratulationsView().setVisible(true);
+    }//GEN-LAST:event_finishButtonActionPerformed
 
-        boolean allFieldsFilled = !answerTextField1.getText().isEmpty()
-                && !answerTextField2.getText().isEmpty()
-                && !answerTextField3.getText().isEmpty()
-                && !answerTextField4.getText().isEmpty();
+    private void buttonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarActionPerformed
+        boolean allFieldsFilled = !textFieldResposta1.getText().isEmpty()
+        && !textFieldResposta2.getText().isEmpty()
+        && !textFieldResposta3.getText().isEmpty();
 
         if (!allFieldsFilled) {
             JOptionPane.showMessageDialog(this,
-                    "Complete todos os exercícios antes de continuar",
-                    "Atenção",
-                    JOptionPane.WARNING_MESSAGE);
+                "Complete todos os exercícios antes de continuar",
+                "Atenção",
+                JOptionPane.WARNING_MESSAGE);
         } else {
-            boolean answer1Correct = answerTextField1.getText().equals(phraseTextLabel1.getText());
-            boolean answer2Correct = answerTextField2.getText().equals(phraseTextLabel2.getText());
-            boolean answer3Correct = answerTextField3.getText().equals(phraseTextLabel3.getText());
-            boolean answer4Correct = answerTextField4.getText().equals(phraseTextLabel4.getText());
+            boolean answer1Correct = textFieldResposta1.getText().equals(questoes.get(0).getResposta());
+            boolean answer2Correct = textFieldResposta2.getText().equals(questoes.get(1).getResposta());
+            boolean answer3Correct = textFieldResposta3.getText().equals(questoes.get(2).getResposta());
 
-            if (answer1Correct && answer2Correct && answer3Correct && answer4Correct) {
+            if (answer1Correct && answer2Correct && answer3Correct) {
                 finishButton.setEnabled(true);
             } else {
                 StringBuilder errorMessage = new StringBuilder("As seguintes questões estão incorretas:\n");
@@ -214,39 +247,21 @@ public class LessonView extends javax.swing.JFrame {
                 if (!answer3Correct) {
                     errorMessage.append("Questão 3\n");
                 }
-                if (!answer4Correct) {
-                    errorMessage.append("Questão 4\n");
-                }
 
                 JOptionPane.showMessageDialog(this,
-                        errorMessage.toString(),
-                        "Eita!",
-                        JOptionPane.WARNING_MESSAGE);
+                    errorMessage.toString(),
+                    "Eita!",
+                    JOptionPane.WARNING_MESSAGE);
+                buttonResposta.setEnabled(true);
             }
         }
+    }//GEN-LAST:event_buttonVerificarActionPerformed
 
-    }//GEN-LAST:event_checkButtonMouseClicked
-
-    private void hintMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hintMenuMouseClicked
-        switch (difficulty) {
-            case 1:
-                new View.Content.EasyContentView().setVisible(true);
-                break;
-            case 2:
-                new View.Content.MediumContentView().setVisible(true);
-                break;
-            case 3:
-                new View.Content.HardContentView().setVisible(true);
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_hintMenuMouseClicked
-
-    private void finishButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finishButtonMouseClicked
-        this.dispose();
-        new CongratulationsView().setVisible(true);
-    }//GEN-LAST:event_finishButtonMouseClicked
+    private void buttonRespostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRespostaActionPerformed
+        textFieldCorreta1.setText(questoes.get(0).getResposta());
+        textFieldCorreta2.setText(questoes.get(1).getResposta());
+        textFieldCorreta3.setText(questoes.get(2).getResposta());
+    }//GEN-LAST:event_buttonRespostaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,25 +294,49 @@ public class LessonView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LessonView(1).setVisible(true);
+                new LessonView(Sql.selectQuestionE).setVisible(true);
             }
         });
     }
+    
+    public int[] carregaVetor() {
+        int[] vetor = new int[3];
+        Set<Integer> numerosUsados = new HashSet<>();
+        Random random = new Random();        
+        int i = 0;
+        while (i < vetor.length) {
+            int numeroAleatorio = random.nextInt(8) + 1;
+            if (!numerosUsados.contains(numeroAleatorio)) {
+                vetor[i] = numeroAleatorio;
+                numerosUsados.add(numeroAleatorio);
+                i++;
+            }
+        }        
+        return vetor;
+    }
+    
+    public void carregaQuestoes(){
+        textFieldPergunta1.setText(questoes.get(0).getPergunta());
+        textFieldPergunta2.setText(questoes.get(1).getPergunta());
+        textFieldPergunta3.setText(questoes.get(2).getPergunta());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField answerTextField1;
-    private javax.swing.JTextField answerTextField2;
-    private javax.swing.JTextField answerTextField3;
-    private javax.swing.JTextField answerTextField4;
-    private javax.swing.JButton checkButton;
+    private javax.swing.JButton buttonResposta;
+    private javax.swing.JButton buttonVerificar;
     private javax.swing.JButton finishButton;
     private javax.swing.JMenu goBackMenu;
-    private javax.swing.JMenu hintMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JLabel phraseTextLabel1;
-    private javax.swing.JLabel phraseTextLabel2;
-    private javax.swing.JLabel phraseTextLabel3;
-    private javax.swing.JLabel phraseTextLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel textFieldCorreta1;
+    private javax.swing.JLabel textFieldCorreta2;
+    private javax.swing.JLabel textFieldCorreta3;
+    private javax.swing.JLabel textFieldPergunta1;
+    private javax.swing.JLabel textFieldPergunta2;
+    private javax.swing.JLabel textFieldPergunta3;
+    private javax.swing.JTextField textFieldResposta1;
+    private javax.swing.JTextField textFieldResposta2;
+    private javax.swing.JTextField textFieldResposta3;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,7 @@
 package View.Home;
 
+import SqlCommands.Sql;
+
 /**
  *
  * @author augustosimionato
@@ -137,17 +139,17 @@ public class HomeView extends javax.swing.JFrame {
 
     private void easyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_easyMouseClicked
         this.dispose();
-        new LessonView(1).setVisible(true);
+        new LessonView(Sql.selectQuestionE).setVisible(true);
     }//GEN-LAST:event_easyMouseClicked
 
     private void mediumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mediumMouseClicked
         this.dispose();
-        new LessonView(2).setVisible(true);
+        new LessonView(Sql.selectQuestionM).setVisible(true);
     }//GEN-LAST:event_mediumMouseClicked
 
     private void hardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hardMouseClicked
         this.dispose();
-        new LessonView(3).setVisible(true);
+        new LessonView(Sql.selectQuestionH).setVisible(true);
     }//GEN-LAST:event_hardMouseClicked
 
     /**
