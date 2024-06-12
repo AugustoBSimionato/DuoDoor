@@ -39,10 +39,10 @@ public class EasyContentView extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        backButtonMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Conteúdo");
+        setTitle("Conteúdo básico");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Conteúdo");
@@ -87,13 +87,13 @@ public class EasyContentView extends javax.swing.JFrame {
 
         jLabel19.setText("Are you ready?");
 
-        jMenu1.setText("Voltar");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        backButtonMenu.setText("Voltar");
+        backButtonMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                backButtonMenuMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(backButtonMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -184,9 +184,9 @@ public class EasyContentView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void backButtonMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMenuMouseClicked
         dispose();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_backButtonMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,6 +227,7 @@ public class EasyContentView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu backButtonMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -246,7 +247,6 @@ public class EasyContentView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

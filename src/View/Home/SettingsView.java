@@ -13,7 +13,6 @@ public class SettingsView extends javax.swing.JFrame {
 
     public SettingsView() {
         try {
-            SpecificDAO.CriaConexao();
             initComponents();
             SpecificDAO.loadSettings(LoginView.getIdLogin());
             UserNameTextField.setText(SpecificDAO.getUsuario());

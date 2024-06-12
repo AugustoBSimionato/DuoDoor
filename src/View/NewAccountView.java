@@ -1,13 +1,10 @@
 package View;
 
 import DAOs.SpecificDAO;
-import DAOs.UsuarioDAO;
 import Model.Usuario;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**

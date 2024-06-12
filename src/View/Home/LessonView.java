@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author augustosimionato
  */
 public final class LessonView extends javax.swing.JFrame {
+
     private int[] idQuestoes;
     private ArrayList<Questoes> questoes = null;
     private static String sql;
@@ -33,9 +34,10 @@ public final class LessonView extends javax.swing.JFrame {
         }
     }
 
-    public void difficult(String sql){
+    public void difficult(String sql) {
         this.sql = sql;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +63,10 @@ public final class LessonView extends javax.swing.JFrame {
         textFieldCorreta2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         goBackMenu = new javax.swing.JMenu();
+        contentMenu = new javax.swing.JMenu();
+        easyMenuItem = new javax.swing.JMenuItem();
+        mediumMenuItem = new javax.swing.JMenuItem();
+        hardMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Comece sua jornada");
@@ -102,7 +108,7 @@ public final class LessonView extends javax.swing.JFrame {
         });
 
         buttonResposta.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        buttonResposta.setText("Resposta Correta");
+        buttonResposta.setText("Mostrar respostas");
         buttonResposta.setEnabled(false);
         buttonResposta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,20 +117,17 @@ public final class LessonView extends javax.swing.JFrame {
         });
 
         textFieldCorreta1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        textFieldCorreta1.setText("Resposta Correta 1 aqui");
 
         textFieldCorreta3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        textFieldCorreta3.setText("Resposta Correta 3 aqui");
 
         textFieldCorreta2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        textFieldCorreta2.setText("Resposta Correta 2 aqui");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addComponent(textFieldPergunta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,39 +136,36 @@ public final class LessonView extends javax.swing.JFrame {
                     .addComponent(textFieldResposta1)
                     .addComponent(textFieldPergunta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textFieldPergunta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldCorreta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(textFieldCorreta1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textFieldCorreta3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textFieldCorreta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(finishButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonResposta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                    .addComponent(textFieldCorreta2, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(buttonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonResposta)
+                .addGap(56, 56, 56))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(71, 71, 71)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textFieldPergunta1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textFieldResposta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textFieldCorreta1)
-                .addGap(18, 18, 18)
-                .addComponent(textFieldPergunta2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textFieldResposta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldResposta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldCorreta1)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(textFieldPergunta2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textFieldResposta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textFieldCorreta2)
                         .addGap(18, 18, 18)
@@ -174,9 +174,15 @@ public final class LessonView extends javax.swing.JFrame {
                         .addComponent(textFieldResposta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textFieldCorreta3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
-                .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                        .addContainerGap(137, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(180, 180, 180)
+                        .addComponent(finishButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
 
         goBackMenu.setText("Voltar");
@@ -187,20 +193,46 @@ public final class LessonView extends javax.swing.JFrame {
         });
         jMenuBar1.add(goBackMenu);
 
+        contentMenu.setText("Conteúdo");
+
+        easyMenuItem.setText("Básico");
+        easyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyMenuItemActionPerformed(evt);
+            }
+        });
+        contentMenu.add(easyMenuItem);
+
+        mediumMenuItem.setText("Médio");
+        mediumMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumMenuItemActionPerformed(evt);
+            }
+        });
+        contentMenu.add(mediumMenuItem);
+
+        hardMenuItem.setText("Difícil");
+        hardMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardMenuItemActionPerformed(evt);
+            }
+        });
+        contentMenu.add(hardMenuItem);
+
+        jMenuBar1.add(contentMenu);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -220,14 +252,14 @@ public final class LessonView extends javax.swing.JFrame {
 
     private void buttonVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVerificarActionPerformed
         boolean allFieldsFilled = !textFieldResposta1.getText().isEmpty()
-        && !textFieldResposta2.getText().isEmpty()
-        && !textFieldResposta3.getText().isEmpty();
+                && !textFieldResposta2.getText().isEmpty()
+                && !textFieldResposta3.getText().isEmpty();
 
         if (!allFieldsFilled) {
             JOptionPane.showMessageDialog(this,
-                "Complete todos os exercícios antes de continuar",
-                "Atenção",
-                JOptionPane.WARNING_MESSAGE);
+                    "Complete todos os exercícios antes de continuar",
+                    "Atenção",
+                    JOptionPane.WARNING_MESSAGE);
         } else {
             boolean answer1Correct = textFieldResposta1.getText().equals(questoes.get(0).getResposta());
             boolean answer2Correct = textFieldResposta2.getText().equals(questoes.get(1).getResposta());
@@ -249,9 +281,9 @@ public final class LessonView extends javax.swing.JFrame {
                 }
 
                 JOptionPane.showMessageDialog(this,
-                    errorMessage.toString(),
-                    "Eita!",
-                    JOptionPane.WARNING_MESSAGE);
+                        errorMessage.toString(),
+                        "Eita!",
+                        JOptionPane.WARNING_MESSAGE);
                 buttonResposta.setEnabled(true);
             }
         }
@@ -262,6 +294,18 @@ public final class LessonView extends javax.swing.JFrame {
         textFieldCorreta2.setText(questoes.get(1).getResposta());
         textFieldCorreta3.setText(questoes.get(2).getResposta());
     }//GEN-LAST:event_buttonRespostaActionPerformed
+
+    private void easyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyMenuItemActionPerformed
+        new View.Content.EasyContentView().setVisible(true);
+    }//GEN-LAST:event_easyMenuItemActionPerformed
+
+    private void mediumMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumMenuItemActionPerformed
+        new View.Content.MediumContentView().setVisible(true);
+    }//GEN-LAST:event_mediumMenuItemActionPerformed
+
+    private void hardMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardMenuItemActionPerformed
+        new View.Content.HardContentView().setVisible(true);
+    }//GEN-LAST:event_hardMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,11 +342,11 @@ public final class LessonView extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public int[] carregaVetor() {
         int[] vetor = new int[3];
         Set<Integer> numerosUsados = new HashSet<>();
-        Random random = new Random();        
+        Random random = new Random();
         int i = 0;
         while (i < vetor.length) {
             int numeroAleatorio = random.nextInt(8) + 1;
@@ -311,11 +355,11 @@ public final class LessonView extends javax.swing.JFrame {
                 numerosUsados.add(numeroAleatorio);
                 i++;
             }
-        }        
+        }
         return vetor;
     }
-    
-    public void carregaQuestoes(){
+
+    public void carregaQuestoes() {
         textFieldPergunta1.setText(questoes.get(0).getPergunta());
         textFieldPergunta2.setText(questoes.get(1).getPergunta());
         textFieldPergunta3.setText(questoes.get(2).getPergunta());
@@ -324,11 +368,15 @@ public final class LessonView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonResposta;
     private javax.swing.JButton buttonVerificar;
+    private javax.swing.JMenu contentMenu;
+    private javax.swing.JMenuItem easyMenuItem;
     private javax.swing.JButton finishButton;
     private javax.swing.JMenu goBackMenu;
+    private javax.swing.JMenuItem hardMenuItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem mediumMenuItem;
     private javax.swing.JLabel textFieldCorreta1;
     private javax.swing.JLabel textFieldCorreta2;
     private javax.swing.JLabel textFieldCorreta3;

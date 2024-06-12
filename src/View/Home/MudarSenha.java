@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View.Home;
 
 import DAOs.SpecificDAO;
@@ -19,37 +15,7 @@ public class MudarSenha extends javax.swing.JFrame{
      * Creates new form MudaSenha
      */
     public MudarSenha() {
-        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditActionPerformed(evt);
-            }
-        });
-    }
-    
-    public void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {
-        if (jTextFieldSenhaAtual.getText().equals("") || jTextFieldSenhaNova.getText().equals("")) {
-            JOptionPane.showMessageDialog(this,
-                    "Informe Senha Atual e Nova Senha",
-                    "Mudar Senha",
-                    JOptionPane.WARNING_MESSAGE);
-        } else {
-            try {
-                if(SpecificDAO.updateSenha(LoginView.getIdLogin(), jTextFieldSenhaAtual.getText(), jTextFieldSenhaNova.getText())){
-                    JOptionPane.showMessageDialog(this,
-                    "Senha Alterada com sucesso",
-                    "Mudar Senha",
-                    JOptionPane.WARNING_MESSAGE);
-                    dispose();
-                }else{
-                    JOptionPane.showMessageDialog(this,
-                    "Não foi possivel alterar a senha",
-                    "Mudar Senha",
-                    JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (SQLException erro) {
-                System.out.println("Erro ao Alterar Senha" + erro);
-            }
-        }
+        initComponents();
     }
 
     /**
@@ -83,8 +49,12 @@ public class MudarSenha extends javax.swing.JFrame{
         jTextFieldSenhaNova.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextFieldSenhaNova.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Senha Nova", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jButtonEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonEdit.setText("Salvar");
+        jButtonEdit.setText("jButton1");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,8 +72,8 @@ public class MudarSenha extends javax.swing.JFrame{
                 .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                .addComponent(jButtonEdit)
+                .addGap(139, 139, 139))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +84,9 @@ public class MudarSenha extends javax.swing.JFrame{
                 .addComponent(jTextFieldSenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldSenhaNova, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jButtonEdit)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,10 +104,36 @@ public class MudarSenha extends javax.swing.JFrame{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        if (jTextFieldSenhaAtual.getText().equals("") || jTextFieldSenhaNova.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Informe Senha Atual e Nova Senha",
+                    "Mudar Senha",
+                    JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                if(SpecificDAO.updateSenha(LoginView.getIdLogin(), jTextFieldSenhaAtual.getText(), jTextFieldSenhaNova.getText())){
+                    JOptionPane.showMessageDialog(this,
+                    "Senha Alterada com sucesso",
+                    "Mudar Senha",
+                    JOptionPane.WARNING_MESSAGE);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(this,
+                    "Não foi possivel alterar a senha",
+                    "Mudar Senha",
+                    JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (SQLException erro) {
+                System.out.println("Erro ao Alterar Senha" + erro);
+            }
+        }
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void mains(String args[]) {
+    public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -147,7 +143,7 @@ public class MudarSenha extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonEdit;
     protected javax.swing.JLabel jLabelName;
     private javax.swing.JPanel jPanel1;
     protected javax.swing.JTextField jTextFieldSenhaAtual;

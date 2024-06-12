@@ -6,7 +6,7 @@ package SqlCommands;
  */
 public final class Sql {
     public final static String insertUsuario = "INSERT INTO usuario(nome, email, senha, dateCreate) VALUES (?,?,?,?)";
-    public final static String selectUsuario = "SELECT * FROM usuario WHERE email = ?";
+    public final static String selectUsuario = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
     public final static String selectidLogin = "SELECT * FROM usuario WHERE idLogin = ?";
     public final static String selectLogin = "SELECT idLogin FROM usuario WHERE email = ? AND senha = ?";
     public final static String updateSenha = "UPDATE usuario SET senha = ? WHERE idLogin = ? AND senha = ?";

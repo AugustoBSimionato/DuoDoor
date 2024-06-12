@@ -17,7 +17,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
-    <Property name="title" type="java.lang.String" value="Conte&#xfa;do"/>
+    <Property name="title" type="java.lang.String" value="Conte&#xfa;do m&#xe9;dio"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>

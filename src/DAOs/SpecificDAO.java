@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAOs;
 
 import Model.Questoes;
@@ -46,7 +42,7 @@ public class SpecificDAO extends GenericDAO {
         }
         return false;
     }
-    
+
     public static boolean loadSettings(int idLogin) {
         try {
             prepStat(Sql.selectidLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -58,7 +54,7 @@ public class SpecificDAO extends GenericDAO {
         return false;
     }
 
-    public static boolean loadIdQuestion(String sql, int[] vetor){
+    public static boolean loadIdQuestion(String sql, int[] vetor) {
         try {
             prepStat(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstdados.setInt(1, vetor[0]);
@@ -70,11 +66,11 @@ public class SpecificDAO extends GenericDAO {
         }
         return false;
     }
-    
-    public static ArrayList<Questoes> loadQuestion() throws SQLException{
+
+    public static ArrayList<Questoes> loadQuestion() throws SQLException {
         ArrayList<Questoes> questoes = new ArrayList<>();
         rsdados.first();
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             Questoes quest = new Questoes();
             quest.setPergunta(rsdados.getString("pergunta"));
             quest.setResposta(rsdados.getString("resposta"));
@@ -83,24 +79,36 @@ public class SpecificDAO extends GenericDAO {
         }
         return questoes;
     }
-    
+
     public static int getIdLoginBD() throws SQLException {
         rsdados.first();
         return rsdados.getInt("idLogin");
     }
-    
-    public static String getUsuario() throws SQLException {        
-        rsdados.first();        
+
+    public static String getUsuario() throws SQLException {
+        rsdados.first();
         return rsdados.getString("nome");
     }
-    
+
     public static String getEmail() throws SQLException {
         rsdados.first();
         return rsdados.getString("email");
     }
-    
+
     public static Date getDate() throws SQLException {
         rsdados.first();
         return rsdados.getDate("dateCreate");
     }
+
+    public static boolean deleteUsuarioByEmail(String email) throws SQLException {
+        prepStat("DELETE FROM usuario WHERE email = ?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        pstdados.setString(1, email);
+        return genericUpdate();
+    }
+    
+    public static void initializeResultSet(String sql) throws SQLException {
+        prepStat(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        genericQuery(); // Assuming this method executes the query and initializes rsdados
+    }
+
 }

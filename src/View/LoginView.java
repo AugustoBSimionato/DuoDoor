@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class LoginView extends javax.swing.JFrame {
 
     private static LoginView tela;
-    private static int idLogin = 1;
+    private static int idLogin;
 
     public static int getIdLogin() {
         return idLogin;
