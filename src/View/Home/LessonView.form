@@ -19,7 +19,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="easyMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="B&#xe1;sico"/>
+                <Property name="text" type="java.lang.String" value="Comece sua jornada"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="easyMenuItemActionPerformed"/>
@@ -27,7 +27,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mediumMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="M&#xe9;dio"/>
+                <Property name="text" type="java.lang.String" value="Continue sua jornada"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mediumMenuItemActionPerformed"/>
@@ -35,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="hardMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Dif&#xed;cil"/>
+                <Property name="text" type="java.lang.String" value="Finalizando a jornada"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hardMenuItemActionPerformed"/>

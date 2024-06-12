@@ -195,7 +195,7 @@ public final class LessonView extends javax.swing.JFrame {
 
         contentMenu.setText("Conteúdo");
 
-        easyMenuItem.setText("Básico");
+        easyMenuItem.setText("Comece sua jornada");
         easyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 easyMenuItemActionPerformed(evt);
@@ -203,7 +203,7 @@ public final class LessonView extends javax.swing.JFrame {
         });
         contentMenu.add(easyMenuItem);
 
-        mediumMenuItem.setText("Médio");
+        mediumMenuItem.setText("Continue sua jornada");
         mediumMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mediumMenuItemActionPerformed(evt);
@@ -211,7 +211,7 @@ public final class LessonView extends javax.swing.JFrame {
         });
         contentMenu.add(mediumMenuItem);
 
-        hardMenuItem.setText("Difícil");
+        hardMenuItem.setText("Finalizando a jornada");
         hardMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hardMenuItemActionPerformed(evt);
